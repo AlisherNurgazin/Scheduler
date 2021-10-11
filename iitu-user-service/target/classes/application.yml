@@ -1,0 +1,48 @@
+
+server:
+  port: 8082
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/java_project_user_service
+    username: rakhat
+    password: rakhat
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+
+  application:
+    name: user-service
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: true
+
+eureka:
+  client:
+    region: default
+    registry-fetch-interval-seconds: 30
+    service-url:
+      defaultZone: http://localhost:8762/eureka
+
+logging:
+  file:
+    path: my.log
+  level:
+    root: ERROR
+    org:
+      springframework:
+        web: WARN
+    kz:
+      iitu:
+        java:
+          userserviceclient: DEBUG
+
